@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Routes, Route, Link, Navigate } from "react-router-dom";
 import "./App.css";
 import AnaloguePads from "./components/AnaloguePads";
@@ -15,6 +15,22 @@ import { spacing } from '@mui/system';
 
 
 function App() {
+
+  const [drumStyle, setDrumStyle] = useState(0) 
+
+  const handleClick = (e) => {
+
+    if (drumStyle === 0 ) {
+      setDrumStyle(1)
+
+    } else if(drumStyle === 1 ){
+      setDrumStyle(2)
+
+    } else if(drumStyle === 2 ){
+      setDrumStyle(0)
+
+    }
+
   return (
     <div className="App">
       <Box sx={{bgcolor: '#353935', py:20, margin: 0 }}>
@@ -25,6 +41,24 @@ function App() {
             title="Dingo Drum"
           ></ButtonAppBar>
         </Container>
+
+        <nav>
+      <Link to="/About">
+          <Btn>About</Btn>
+        </Link> &nbsp; 
+        <Link to="/AnaloguePads">
+          <Btn onClick={handleClick}>{drumStyle ===1 && <Btn onClick={handleClick} >Classic Drum</Btn>}</Btn>
+        </Link>
+        &nbsp;
+        <Link to="/ClassicDrumPads">
+          <Btn onClick={handleClick}>{drumStyle ===0 && <Btn onClick={handleClick} >Animal Drum</Btn>}</Btn>
+        </Link>
+        &nbsp;
+        <Link to="/AnimalPads">
+          <Btn onClick={handleClick}>{drumStyle ===2 && <Btn onClick={handleClick} >Analogue Kit</Btn>}</Btn>
+        </Link>
+
+      </nav>
         
         {/* <h1>Dingo Drum</h1> */}
 
