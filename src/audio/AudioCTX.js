@@ -29,7 +29,6 @@ let pads = [kick, clap, snare, closedHH, openHH, ride, crash, tom1, tom2].map(
  );
 
 
-
 let initialContext = {
   actx,
   out,
