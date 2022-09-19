@@ -2,7 +2,7 @@ import React from 'react'
 import {Frame} from './styled'
 
 export default function AnimalPads() {
-
+  
   const animals = ["bird", "dog", "frog", "kitty", "squirrel", "wolf"] 
 
   const playSound = (e) => {

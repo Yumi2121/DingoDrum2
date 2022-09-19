@@ -1,6 +1,6 @@
 import { Frame } from "./styled";
 import { useContext } from "react";
-import AudioCTX from "../audio/AudioCTX.js";
+import AudioCTX from "../audio/AudioCTX";
 
 const AnaloguePads = () => {
   const actx = useContext(AudioCTX);

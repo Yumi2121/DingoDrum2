@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Routes, Route, Link, Navigate } from "react-router-dom";
 import "./App.css";
 import AnaloguePads from "./components/AnaloguePads";
@@ -10,6 +10,25 @@ import About from "./components/About";
 import Footer from "./components/Footer";
 
 function App() {
+
+  const [drumStyle, setDrumStyle] = useState(0) 
+
+  const handleClick = (e) => {
+    
+    if (drumStyle === 0 ) {
+      setDrumStyle(1)
+      
+    } else if(drumStyle === 1 ){
+      setDrumStyle(2)
+      
+    } else if(drumStyle === 2 ){
+      setDrumStyle(0)
+      
+    }
+    
+  }
+
+
   return (
     <div className="App">
       <nav>
@@ -17,15 +36,15 @@ function App() {
           <Btn>About</Btn>
         </Link> &nbsp; 
         <Link to="/AnaloguePads">
-          <Btn>Analogue Kit</Btn>
+          <Btn onClick={handleClick}>{drumStyle ===1 && <Btn onClick={handleClick} >Classic Drum</Btn>}</Btn>
         </Link>
         &nbsp;
         <Link to="/ClassicDrumPads">
-          <Btn>Classic Kit</Btn>
+          <Btn onClick={handleClick}>{drumStyle ===0 && <Btn onClick={handleClick} >Animal Drum</Btn>}</Btn>
         </Link>
         &nbsp;
         <Link to="/AnimalPads">
-          <Btn>Animal Kit</Btn>
+          <Btn onClick={handleClick}>{drumStyle ===2 && <Btn onClick={handleClick} >Analogue Kit</Btn>}</Btn>
         </Link>
 
       </nav>
@@ -35,9 +54,9 @@ function App() {
       <Routes>
         <Route path="/About" element={<About />} />
         <Route path="/AnaloguePads" element={<AnaloguePads />} />
-        <Route path="/ClassicDrumPads" element={<ClassicDrumPads />} />
-        <Route path="/AnimalPads" element={<AnimalPads />} />
-        <Route path="/" element={<Navigate to="/AnaloguePads" />} />
+        <Route path="/ClassicDrumPads" element={<ClassicDrumPads handleClick={handleClick}/>} />
+        <Route path="/AnimalPads" element={<AnimalPads handleClick={handleClick}/>} />
+        <Route path="/" element={<Navigate to="/About" />} />
       </Routes>
 
       <Footer />
